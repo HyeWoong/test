@@ -1,28 +1,17 @@
-# es6 정리
-## 뿅뿅
-### 빵빵
+# ES6 스타일 가이드
+## 1.유형 (Type)
 
--텍스트
--텍스트
+**Primitives:** 원시형(Primitive type)은 그 값을 직접 조작합니다.
 
-+텍스트
-+텍스트
+* string
+* number
+* boolean
+* null
+* undefined
 
-*텍스트
-*텍스트
-
-1.리스트
-2.리스트
-3.리스트
-
-**텍스트**
-
----
-***
-
-    코드블럭
-`javascript`
+    `const foo = 1;`
+`let bar = foo;`
+`bar = 9;`
+`console.log(foo, bar); // => 1, 9`
 
 
-
-> 인용
