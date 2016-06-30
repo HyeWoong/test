@@ -9,8 +9,8 @@
 * null
 * * undefined
 
-    const foo = 1;<br/>
+    'const foo = 1;<br/>
 let bar = foo;<br/>
 bar = 9;<br/>
-console.log(foo, bar); // => 1, 9
+console.log(foo, bar); // => 1, 9'
 
