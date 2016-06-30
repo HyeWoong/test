@@ -7,11 +7,11 @@
 * number
 * boolean
 * null
-* undefined
+* * undefined
 
     `const foo = 1;`
-`let bar = foo;`
-`bar = 9;`
-`console.log(foo, bar); // => 1, 9`
+    `let bar = foo;`
+    `bar = 9;`
+    console.log(foo, bar); // => 1, 9
 
 
