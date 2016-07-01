@@ -44,16 +44,16 @@ ES6에서는 let과 const 라는 새로운 선언 방법이 생겼다. (const �
 기존 var는 함수범위, let과 const는 블록범위를 갖는다.
 
     var a = 1;
-{
-    var a = 2;
-}
-console.log(a); // 2
+    {
+        var a = 2;
+    }
+    console.log(a); // 2
 
     let a = 1;
-{
-    let a = 2;
-}
-console.log(a); // 1
+    {
+        let a = 2;
+    }
+    console.log(a); // 1
 
 큰 프로젝트나 복잡한 함수에서 오류를 발생할수있으니 var를 사용하지 않도록 한다.
 
@@ -65,69 +65,67 @@ Class 문법은 새로운 객체지향 상속 모델을 제공하는 것은 아�
 JavaScript class는 객체를 생성하고 상속을 다루는데 있어 훨씬 더 단순하고 명확한 문법을 제공합니다.
 
     // ES5
-'use strict';
-
-function User(name){
-  this._name = name;
-}
-
-User.prototype = Object.create(null, {
-  constructor: {
-    value: User
-  },
-
-  say: {
-    value: function() {
-      return 'My name is ' + this._name;
+    'use strict';
+    function User(name){
+      this._name = name;
     }
-  }
-});
+    User.prototype = Object.create(null, {
+      constructor: {
+        value: User
+      },
 
-function Admin(name) {
-  User.apply(this, arguments);
-}
+      say: {
+        value: function() {
+          return 'My name is ' + this._name;
+        }
+      }
+    });
 
-Admin.prototype = Object.create(User.prototype, {
-  constructor: {
-    value: Admin
-  },
-
-  say: {
-    value: function() {
-      var superClassPrototype =  Object.getPrototypeOf(this.constructor.prototype);
-      return '[Administrator] ' + superClassPrototype.say.call(this);
+    function Admin(name) {
+      User.apply(this, arguments);
     }
-  }
-});
 
-var user = new User('Alice');
-console.log(user.say()); // My name is Alice
+    Admin.prototype = Object.create(User.prototype, {
+      constructor: {
+        value: Admin
+      },
 
-var admin = new Admin('Bob');
-console.log(admin.say()); // [Administrator] My name is Bob
+      say: {
+        value: function() {
+          var superClassPrototype =  Object.getPrototypeOf(this.constructor.prototype);
+          return '[Administrator] ' + superClassPrototype.say.call(this);
+        }
+      }
+    });
+
+    var user = new User('Alice');
+    console.log(user.say()); // My name is Alice
+
+    var admin = new Admin('Bob');
+    console.log(admin.say()); // [Administrator] My name is Bob
 
 
     // ES6
-'use strict';
+    'use strict';
 
-class User {
-  constructor(name) {
-    this._name = name;
-  }
+    class User {
+      constructor(name) {
+        this._name = name;
+      }
 
-  say() {
-    return 'My name is ' + this._name;
-  }
-}
+      say() {
+        return 'My name is ' + this._name;
+      }
+    }
 
-class Admin extends User {
-  say() {
-    return '[Administrator] ' + super.say();
-  }
-}
+    class Admin extends User {
+      say() {
+        return '[Administrator] ' + super.say();
+      }
+    }
 
-var user = new User('Alice');
-console.log(user.say()); // My name is Alice
+    var user = new User('Alice');
+    console.log(user.say()); // My name is Alice
 
-var admin = new Admin('Bob');
-console.log(admin.say()); // [Administrator] My name is Bob
+    var admin = new Admin('Bob');
+    console.log(admin.say()); // [Administrator] My name is Bob
